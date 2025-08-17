@@ -169,20 +169,59 @@ extensions:
 
 ## 🔄 Example Workflow Diagram
 
-``` mermaid
 flowchart TD
-    A[User Query] --> B[Embedding]
-    B --> C[Retriever / Vector DB]
-    C --> D{RAG Variant?}
-    D -->|Naive| E1[Direct Context → LLM]
-    D -->|HyDE| E2[Hypothetical Expansion → Vector DB → LLM]
-    D -->|Graph| E3[Graph DB Reasoning → LLM]
-    D -->|Agentic| E4[Multi-Agent Retrieval → LLM]
-    E1 --> F[Final Answer]
-    E2 --> F
-    E3 --> F
-    E4 --> F
-```
+    %% Main entry point
+    A[User Query] --> B[Chunking & Preprocessing] --> C[Embedding Generation]
+    C --> D[Retriever / Vector DB]
+    D --> E{Select RAG Variant}
+    
+    %% RAG Levels
+    E --> F[RAG Foundation Models]
+    E --> G[RAG Intermediate Models]
+    E --> H[RAG Advanced Models]
+    E --> I[RAG Next-Generation Models]
+
+    %% Foundation Models
+    F --> F1[Naive RAG]
+    F --> F2[Multimodal RAG]
+    F --> F3[HyDE RAG]
+
+    %% Intermediate Models
+    G --> G1[Corrective RAG]
+    G --> G2[Graph RAG]
+    G --> G3[Hybrid RAG]
+
+    %% Advanced Models
+    H --> H1[Adaptive RAG]
+    H --> H2[Agentic RAG]
+
+    %% Next-Gen Models
+    I --> I1[Temporal / Streaming RAG]
+    I --> I2[Hierarchical RAG]
+    I --> I3[Retrieval-Ensemble RAG]
+    I --> I4[Tool-Augmented RAG]
+    I --> I5[Personalization & Secure RAG]
+    I --> I6[Cross-Lingual RAG]
+    I --> I7[Neuro-Symbolic RAG]
+    I --> I8[Closed-loop / Feedback RAG]
+    I --> I9[Explainable / Provenance RAG]
+
+    %% Final Output
+    F1 & F2 & F3 & G1 & G2 & G3 & H1 & H2 & I1 & I2 & I3 & I4 & I5 & I6 & I7 & I8 & I9 --> Z[LLM Synthesis & Prompt Template] --> Y[Final Answer]
+
+    %% Styling
+    classDef foundation fill=#E0F7FA,stroke=#006064,stroke-width=2px,color=#004D40;
+    classDef intermediate fill=#FFF3E0,stroke=#E65100,stroke-width=2px,color=#BF360C;
+    classDef advanced fill=#F3E5F5,stroke=#4A148C,stroke-width=2px,color=#311B92;
+    classDef nextgen fill=#E8F5E9,stroke=#1B5E20,stroke-width=2px,color=#004D40;
+    classDef process fill=#ECEFF1,stroke=#37474F,stroke-width=1px,color=#263238;
+
+    class F,F1,F2,F3 foundation;
+    class G,G1,G2,G3 intermediate;
+    class H,H1,H2 advanced;
+    class I,I1,I2,I3,I4,I5,I6,I7,I8,I9 nextgen;
+    class A,B,C,D,E,Z,Y process;
+
 
 ------------------------------------------------------------------------
 
