@@ -169,7 +169,7 @@ extensions:
 
 ## 🔄 Example Workflow Diagram
 
-``` mermaid
+```mermaid
 flowchart TD
     %% Main entry point
     A[User Query] --> B[Chunking & Preprocessing] --> C[Embedding Generation]
