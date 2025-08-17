@@ -169,53 +169,19 @@ extensions:
 
 ## 🔄 Example Workflow Diagram
 
-```mermaid
+``` mermaid
 flowchart TD
-    %% Main entry point
-    A[User Query] --> B[Chunking & Preprocessing] --> C[Embedding Generation]
-    C --> D[Retriever / Vector DB]
-    D --> E{Select RAG Variant}
-    
-    %% RAG Levels
-    E --> F[RAG Foundation Models]
-    E --> G[RAG Intermediate Models]
-    E --> H[RAG Advanced Models]
-    E --> I[RAG Next-Generation Models]
-
-    %% Foundation Models
-    F --> F1[Naive RAG]
-    F --> F2[Multimodal RAG]
-    F --> F3[HyDE RAG]
-
-    %% Intermediate Models
-    G --> G1[Corrective RAG]
-    G --> G2[Graph RAG]
-    G --> G3[Hybrid RAG]
-
-    %% Advanced Models
-    H --> H1[Adaptive RAG]
-    H --> H2[Agentic RAG]
-
-    %% Next-Gen Models
-    I --> I1[Temporal / Streaming RAG]
-    I --> I2[Hierarchical RAG]
-    I --> I3[Explainable ...]
-
-    %% Final Output
-    F1 & F2 & F3 & G1 & G2 & G3 & H1 & H2 & I1 & I2 & I3 --> Z[LLM Synthesis & Prompt Template] --> Y[Final Answer]
-
-    %% Styling (GitHub-safe: named colors only)
-    classDef foundation fill=lightblue,stroke=blue,color=black;
-    classDef intermediate fill=lightyellow,stroke=orange,color=black;
-    classDef advanced fill=lavender,stroke=purple,color=black;
-    classDef nextgen fill=lightgreen,stroke=green,color=black;
-    classDef process fill=white,stroke=gray,color=black;
-
-    class F,F1,F2,F3 foundation;
-    class G,G1,G2,G3 intermediate;
-    class H,H1,H2 advanced;
-    class I,I1,I2,I3 nextgen;
-    class A,B,C,D,E,Z,Y process;
+    A[User Query] --> B[Embedding]
+    B --> C[Retriever / Vector DB]
+    C --> D{RAG Variant?}
+    D -->|Naive| E1[Direct Context → LLM]
+    D -->|HyDE| E2[Hypothetical Expansion → Vector DB → LLM]
+    D -->|Graph| E3[Graph DB Reasoning → LLM]
+    D -->|Agentic| E4[Multi-Agent Retrieval → LLM]
+    E1 --> F[Final Answer]
+    E2 --> F
+    E3 --> F
+    E4 --> F
 ```
 
 ------------------------------------------------------------------------
