@@ -1,0 +1,20 @@
+data_path: "data"
+
+chunk:
+  size: 1000
+  overlap: 200
+
+faiss:
+  index_path: "faiss_index"
+
+models:
+  # Free text embeddings
+  text_embedding: "all-MiniLM-L6-v2"        # fast & small; try "all-mpnet-base-v2" for higher quality
+
+# LLMs for HyDE + final synthesis
+# Use prefix "openai:" or "ollama:" to select the backend.
+hyde_llm: "openai:gpt-4o-mini"                   # or "ollama:llama3"
+final_llm: "openai:gpt-4o-mini"                  # or "ollama:llama3"
+
+retrieval:
+  k: 5

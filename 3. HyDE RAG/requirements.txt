@@ -1,0 +1,21 @@
+# Core LangChain + community integrations
+langchain>=0.2.6
+langchain-community>=0.2.6
+
+# Free embeddings + deps
+sentence-transformers>=2.7.0
+torch>=2.2.0
+
+# Vector store
+faiss-cpu>=1.7.4
+
+# Parsers & utils
+PyPDF2>=3.0.0
+python-docx>=0.8.11
+tqdm>=4.66.0
+python-dotenv>=1.0.1
+pyyaml>=6.0.1
+
+# Optional API server
+fastapi>=0.111.0
+uvicorn>=0.30.0
