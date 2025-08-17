@@ -1,131 +1,217 @@
-📑 Research Article: “The RAG Kitchen: A Systematic Survey of Retrieval-Augmented Generation Architectures”
-Abstract
-Retrieval-Augmented Generation (RAG) has emerged as a dominant paradigm for integrating external knowledge into Large Language Models (LLMs), addressing hallucinations and improving factuality. This article presents a comprehensive taxonomy—dubbed the “RAG Kitchen”—covering foundational, intermediate, advanced, and experimental architectures. Each approach is described with its flow, technical motivation, and application scenarios. We further analyze trade-offs in scalability, latency, interpretability, and domain adaptability.
+# 🧠 RAG Kitchen: Advanced Retrieval-Augmented Generation Architectures
 
-1. Introduction
-LLMs have strong generative ability but suffer from hallucination and outdated knowledge.
+Welcome to the **RAG Kitchen** — a curated collection of **Retrieval-Augmented Generation (RAG) architectures**.  
+This repository provides a **Comprehensive overview**, **Technical flows**, **Production Ready Projects** and **Research insights** into how different RAG variants enhance reasoning, retrieval, and generation.
 
-RAG bridges this gap by grounding responses in external data.
+Retrieval-Augmented Generation (RAG) is a cutting-edge framework combining **retrieval-based knowledge access** with **generative reasoning**. This approach empowers LLMs to provide more accurate, grounded, and explainable outputs by integrating structured/unstructured knowledge into the reasoning loop.
 
-Early designs were simple query → retrieval → generation loops.
+## 💡 Why RAG?
+✔️ Reduces hallucination  
+✔️ Provides explainability  
+✔️ Extends LLM knowledge beyond training data  
+✔️ Enables domain-specific applications (finance, healthcare, legal, etc.)  
 
-Evolved into complex agentic, adaptive, and secure workflows.
+------------------------------------------------------------------------
 
-We present a complete “menu” of RAG methods, structured as a RAG Kitchen.
+## 📖 Table of Contents
+1. [Introduction](#introduction)
+2. [Why RAG?](#why-rag)
+3. [RAG Architectures](#rag-architectures)
+   - [Naive RAG](#1-naive-rag)
+   - [Multimodal RAG](#2-multimodal-rag)
+   - [HyDE RAG](#3-hyde-rag)
+   - [Corrective RAG](#4-corrective-rag)
+   - [Graph RAG](#5-graph-rag)
+   - [Hybrid RAG](#6-hybrid-rag)
+   - [Adaptive RAG](#7-adaptive-rag)
+   - [Agentic RAG](#8-agentic-rag)
+   - [Advanced Variants](#9-advanced-variants)
+4. [Comparison Matrix](#comparison-matrix)
+5. [Use Cases](#use-cases)
+6. [Getting Started](#getting-started)
+7. [References](#references)
 
-2. Foundations of RAG
-2.1 Naive RAG
-Flow: Query → Embedding → Vector DB → Retrieved docs → LLM
+---
 
-Use case: Simple QA over domain corpora.
 
-Limitation: Sensitive to embedding errors, lacks validation.
+## 🍳 RAG Kitchen Menu (Architectures)
 
-2.2 Multimodal RAG
-Extends Naive RAG to images, audio, video.
+### 1. Naïve RAG
 
-Example: Clinical report generation combining medical text + imaging.
+-   **Flow:** Query → Embedding → Vector DB Retrieval → LLM
+-   **Use Case:** Simple document Q&A, baseline RAG
+-   **Limitations:** No query optimization, poor handling of ambiguous
+    inputs.
 
-2.3 HyDE RAG
-Generates “pseudo-document” before retrieval, increasing recall.
+### 2. Multimodal RAG
 
-Equation: Retrieve(Embed(Hypothetical Answer))
+-   **Flow:** Query (Text/Image/Audio) → Embedding → Vector DB Retrieval
+    → LLM
+-   **Use Case:** Knowledge retrieval across **multiple modalities**
+    (documents + images + video)
+-   **Strength:** Suitable for domains like **medical imaging,
+    surveillance, multimodal search**.
 
-Effective in low-resource / sparse knowledge settings.
+### 3. HyDE RAG (Hypothetical Document Expansion)
 
-3. Intermediate Architectures
-3.1 Corrective RAG
-Adds grading and validation pipeline.
+-   **Flow:** Query → LLM generates Hypothetical Answer → Embedding →
+    Vector DB → Retrieval → LLM
+-   **Strength:** Expands queries with synthetic context → **improves
+    recall**
+-   **Example:** Legal search, patent innovation discovery.
 
-Improves reliability by rejecting or correcting poor retrievals.
+### 4. Corrective RAG
 
-3.2 Graph RAG
-Constructs Knowledge Graph (KG) from retrieved text.
+-   **Flow:** Query → Embedding → Retrieval → Grader & Query Analyzer →
+    Refined Search → Corrected Output
+-   **Strength:** Self-corrects poor retrievals using
+    **grading/re-ranking**
+-   **Applications:** Healthcare, compliance systems, finance audits.
 
-Allows multi-hop reasoning and entity-centric queries.
+### 5. Graph RAG
 
-3.3 Hybrid RAG
-Combines Vector DB retrieval + Graph DB context.
+-   **Flow:** Query → Embedding → Vector DB + Graph DB → Graph Reasoning
+    → LLM
+-   **Strength:** Knowledge Graph + RAG → better contextual
+    relationships
+-   **Use Case:** Enterprise Knowledge Management, Fraud Networks.
 
-Balances fuzzy semantic recall with precise structured lookup.
+### 6. Hybrid RAG
 
-4. Advanced Architectures
-4.1 Adaptive RAG
-Dynamically selects retrieval strategies.
+-   **Flow:** Query → Embedding → Vector DB + Graph DB → Aggregation →
+    LLM
+-   **Strength:** Combines strengths of **semantic similarity** and
+    **symbolic reasoning**
+-   **Applications:** Smart Cities, AI Assistants with structured +
+    unstructured data.
 
-Query analyzer decides whether single-step or multi-step retrieval is required.
+### 7. Adaptive RAG
 
-4.2 Agentic RAG
-Multi-agent orchestration: one agent manages other retrievers, tools, or APIs.
+-   **Flow:** Query → Multi-step Analyzer → Reasoning Chain → Dynamic
+    Retrieval → LLM
+-   **Strength:** Dynamically **chooses retrieval strategy** (short,
+    long, multi-hop)
+-   **Use Case:** Open-domain Q&A, legal case resolution.
 
-Enables task decomposition, specialized workflows.
+### 8. Agentic RAG
 
-5. Next-Generation Directions
-5.1 Temporal / Streaming RAG
-Time-aware indices, sliding-window retrieval, TTL-based storage.
+-   **Flow:** Query → Agent (ReACT, CoT, Memory, Planning) → Specialized
+    Agents → Retrieval → LLM
+-   **Strength:** Multi-agent systems coordinating knowledge retrieval
+-   **Use Case:** Complex enterprise automation, research copilots,
+    cloud-based knowledge oracles.
 
-Crucial for financial trading, news monitoring.
+------------------------------------------------------------------------
 
-5.2 Hierarchical RAG
-Multi-level retrieval → context fusion.
+## 🚀 Advanced RAG Techniques
 
-Example: chunk → section → full paper.
+Beyond the classical architectures, **next-gen RAG** introduces powerful
+extensions:
 
-5.3 Retrieval-Ensemble RAG
-Combines multiple retrievers (BM25 + dense + cross-encoder).
+### 🔹 9. Self-Reflective RAG
 
-Fusion scoring improves both recall and precision.
+-   The LLM **reflects** on its own response, re-queries if confidence
+    is low.
+-   Inspired by **self-consistency reasoning**.
 
-5.4 Tool-Augmented RAG
-Augments retrieval with deterministic tools (SQL, Python execution).
+### 🔹 10. Knowledge-Augmented RAG
 
-Reduces hallucination by grounding in verifiable outputs.
+-   Merges **retrieval from private KBs** with **external web search**
+    (hybrid online-offline context).
 
-5.5 Personalization & Secure RAG
-Profiles, preferences, and access control integrated.
+### 🔹 11. Memory-Augmented RAG
 
-Privacy-preserving retrieval: encrypted vector DBs, DP-based logging.
+-   Incorporates **short-term** and **long-term memory** for
+    personalized retrieval.
 
-5.6 Cross-Lingual RAG
-Retrieval across multilingual corpora via aligned embeddings.
+### 🔹 12. Continual RAG
 
-5.7 Neuro-Symbolic RAG
-Combines symbolic reasoning with neural embeddings.
+-   Continuous learning → keeps updating **embeddings and knowledge
+    base** without full re-indexing.
 
-Suitable for scientific and legal reasoning.
+### 🔹 13. Feedback Loop RAG
 
-5.8 Closed-loop / Feedback RAG
-Uses reinforcement signals, user feedback, or self-evaluation for retriever refinement.
+-   Human/agent feedback → updates retrieval pipeline dynamically.
+-   Essential for **compliance-heavy domains** like Pharmacovigilance.
 
-5.9 Explainable / Provenance RAG
-Retrieves with evidence chains; outputs include provenance tracking.
+------------------------------------------------------------------------
 
-Critical for regulated domains.
+---
 
-6. Comparative Analysis
-RAG Type	Strength	Weakness	Best Use Case
-Naive	Simple	Hallucination	Basic QA
-Multimodal	Handles text+image/video	Expensive	Healthcare, media
-HyDE	Boosts recall	May hallucinate pseudo-doc	Sparse KB
-Corrective	Validation	Higher latency	Safety-critical apps
-Graph	Structured reasoning	Graph building cost	Enterprise KG
-Hybrid	Balance structured/unstructured	Complexity	Scientific QA
-Adaptive	Dynamic flexibility	Query analyzer overhead	Open-domain
-Agentic	Multi-tool orchestration	Orchestration latency	Complex workflows
-Temporal	Real-time	Storage-heavy	News/finance
-Hierarchical	Long-form QA	Multi-step cost	Books, legal docs
-Ensemble	Balanced retrieval	Expensive	Robust QA
-Tool-Augmented	Precision	Tool integration	Finance, coding
-Personalization	Tailored responses	Privacy issues	Recommenders
-Cross-lingual	Global QA	Translation errors	Global enterprises
-Neuro-Symbolic	Explainable reasoning	Slow	Legal, scientific
-Feedback/Closed-loop	Self-improving	Needs feedback data	Production QA
-Explainable RAG	Transparent	Overhead	Healthcare, law
+## 📊 Comparison Matrix
 
-7. Conclusion
-RAG has evolved from a single “recipe” into a full kitchen of architectures.
+| RAG Type       | Multi-modal | Query Refinement | Graph Support | Agentic | Complexity | Best For |
+|----------------|-------------|------------------|---------------|---------|------------|----------|
+| Naive          | ❌           | ❌                | ❌             | ❌       | Low        | Quick prototypes |
+| Multimodal     | ✅           | ❌                | ❌             | ❌       | Medium     | Cross-modal tasks |
+| HyDE           | ❌           | ✅                | ❌             | ❌       | Medium     | Improving recall |
+| Corrective     | ❌           | ✅                | ❌             | ❌       | Medium     | Accuracy-sensitive |
+| Graph          | ❌           | ❌                | ✅             | ❌       | Medium     | Knowledge graphs |
+| Hybrid         | ❌           | ❌                | ✅             | ❌       | High       | Complex queries |
+| Adaptive       | ❌           | ✅                | ❌             | ❌       | High       | Dynamic reasoning |
+| Agentic        | ✅           | ✅                | ✅             | ✅       | Very High  | Enterprise AI |
 
-The future lies in adaptive, explainable, and secure RAG systems.
+---
 
-Each “dish” has trade-offs—just like in a real kitchen, you pick the right recipe for your customer’s taste (domain & use case).
+## 📊 Research Insights
 
+-   **RAG outperforms vanilla LLMs** in domains requiring **factual
+    grounding** (e.g., medicine, law, finance).
+-   **Graph RAG + Hybrid RAG** are best for **enterprise knowledge
+    reasoning**.
+-   **HyDE RAG** shows significant recall improvements in **sparse
+    retrieval scenarios** (legal/patent search).
+-   **Agentic RAG** and **Adaptive RAG** align with **AutoGPT-style
+    workflows**, enabling **autonomous orchestration** of retrieval +
+    reasoning.
+
+------------------------------------------------------------------------
+
+## 🔄 Example Workflow Diagram
+
+``` mermaid
+flowchart TD
+    A[User Query] --> B[Embedding]
+    B --> C[Retriever / Vector DB]
+    C --> D{RAG Variant?}
+    D -->|Naive| E1[Direct Context → LLM]
+    D -->|HyDE| E2[Hypothetical Expansion → Vector DB → LLM]
+    D -->|Graph| E3[Graph DB Reasoning → LLM]
+    D -->|Agentic| E4[Multi-Agent Retrieval → LLM]
+    E1 --> F[Final Answer]
+    E2 --> F
+    E3 --> F
+    E4 --> F
+```
+
+------------------------------------------------------------------------
+
+## 🏆 Conclusion
+
+The **RAG Kitchen** provides a **modular menu of retrieval strategies**,
+enabling developers, researchers, and enterprises to choose the right
+recipe depending on their problem domain.
+
+➡️ Future directions include **multi-agent self-improving RAG**,
+**federated RAG for privacy-preserving retrieval**, and
+**energy-efficient adaptive RAG**.
+
+------------------------------------------------------------------------
+
+📖 Inspired by enterprise AI solutions in **Pharmacovigilance, Smart
+Cities, Oil & Gas, Healthcare, and Finance**.
+
+## 🚀 Use Cases
+- **Healthcare** → Clinical trial analysis, pharmacovigilance signal detection  
+- **Finance** → Fraud detection, real-time market intelligence  
+- **Legal** → Case law retrieval, contract analysis  
+- **Smart Cities** → Traffic monitoring, anomaly detection  
+- **Enterprise Search** → Knowledge management, Q&A bots  
+
+---
+
+## 🛠 Getting Started
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/your-username/rag-kitchen.git
+   cd rag-kitchen
