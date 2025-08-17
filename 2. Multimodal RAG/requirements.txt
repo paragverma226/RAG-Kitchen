@@ -1,0 +1,18 @@
+langchain>=0.1.0
+langchain-community>=0.0.30
+faiss-cpu>=1.7.4
+python-dotenv>=1.0.0
+PyPDF2>=3.0.0
+python-docx>=0.8.11
+tqdm>=4.0.0
+uvicorn>=0.22.0
+fastapi>=0.95.0
+streamlit>=1.30.0
+
+# FREE embeddings + vision
+sentence-transformers>=2.2.2
+torch>=2.1.0
+pillow>=10.2.0
+
+# OCR (requires native Tesseract installed separately)
+pytesseract>=0.3.10

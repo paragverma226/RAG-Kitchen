@@ -1,0 +1,16 @@
+data_path: "data"
+
+chunk:
+  size: 1000
+  overlap: 200
+
+faiss:
+  text_index_path: "faiss_text"
+  image_index_path: "faiss_image"
+
+models:
+  text_embedding: "all-MiniLM-L6-v2"
+  image_embedding: "clip-ViT-B-32"   # CLIP model from sentence-transformers
+
+openai:
+  model: "gpt-4o-mini"                    # Keep paid LLM (swap to free via Ollama if you want)
