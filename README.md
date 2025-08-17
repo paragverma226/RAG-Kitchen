@@ -210,12 +210,12 @@ flowchart TD
     %% Final Output
     F1 & F2 & F3 & G1 & G2 & G3 & H1 & H2 & I1 & I2 & I3 & I4 & I5 & I6 & I7 & I8 & I9 --> Z[LLM Synthesis & Prompt Template] --> Y[Final Answer]
 
-    %% Styling
-    classDef foundation fill=#E0F7FA,stroke=#006064,stroke-width=2px,color=#004D40;
-    classDef intermediate fill=#FFF3E0,stroke=#E65100,stroke-width=2px,color=#BF360C;
-    classDef advanced fill=#F3E5F5,stroke=#4A148C,stroke-width=2px,color=#311B92;
-    classDef nextgen fill=#E8F5E9,stroke=#1B5E20,stroke-width=2px,color=#004D40;
-    classDef process fill=#ECEFF1,stroke=#37474F,stroke-width=1px,color=#263238;
+    %% Styling (GitHub-safe: named colors only)
+    classDef foundation fill=lightblue,stroke=blue,color=black;
+    classDef intermediate fill=lightyellow,stroke=orange,color=black;
+    classDef advanced fill=lavender,stroke=purple,color=black;
+    classDef nextgen fill=lightgreen,stroke=green,color=black;
+    classDef process fill=white,stroke=gray,color=black;
 
     class F,F1,F2,F3 foundation;
     class G,G1,G2,G3 intermediate;
