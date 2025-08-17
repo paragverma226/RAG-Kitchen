@@ -1,0 +1,11 @@
+models:
+  text_embedding: sentence-transformers/all-MiniLM-L6-v2
+  hyde_llm: openai:gpt-4o-mini
+  final_llm: openai:gpt-4o-mini
+faiss:
+  index_path: ./indexes/faiss_index
+ingest:
+  chunk_size: 800
+  chunk_overlap: 100
+retrieval:
+  k: 3

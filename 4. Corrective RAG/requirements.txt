@@ -1,0 +1,14 @@
+streamlit>=1.18.1
+pyyaml
+python-dotenv
+faiss-cpu
+langchain>=0.0
+langchain-community>=0.0
+sentence-transformers
+transformers
+torch
+pypdf
+tqdm
+openai
+# optional if using Ollama locally
+# ollama
