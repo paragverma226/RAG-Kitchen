@@ -1,0 +1,9 @@
+chunk:
+  size: 1000
+  overlap: 200
+faiss:
+  index_path: "faiss_index"
+data_path: "data"
+openai:
+  model: "gpt-4o-mini"
+  embeddings_model: "text-embedding-ada-002"   # or whichever OpenAI embedding model you prefer

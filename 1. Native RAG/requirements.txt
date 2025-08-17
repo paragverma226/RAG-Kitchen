@@ -1,0 +1,13 @@
+langchain>=0.0.250
+faiss-cpu>=1.7.4
+openai>=0.27.0
+python-dotenv>=1.0.0
+PyPDF2>=3.0.0
+python-docx>=0.8.11
+tqdm>=4.0.0
+uvicorn>=0.22.0
+fastapi>=0.95.0
+sentence-transformers>=2.2.2
+streamlit>=1.30.0
+langchain-openai
+langchain-community
