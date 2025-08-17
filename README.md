@@ -169,6 +169,7 @@ extensions:
 
 ## 🔄 Example Workflow Diagram
 
+``` mermaid
 flowchart TD
     %% Main entry point
     A[User Query] --> B[Chunking & Preprocessing] --> C[Embedding Generation]
@@ -221,7 +222,7 @@ flowchart TD
     class H,H1,H2 advanced;
     class I,I1,I2,I3,I4,I5,I6,I7,I8,I9 nextgen;
     class A,B,C,D,E,Z,Y process;
-
+```
 
 ------------------------------------------------------------------------
 
