@@ -199,16 +199,10 @@ flowchart TD
     %% Next-Gen Models
     I --> I1[Temporal / Streaming RAG]
     I --> I2[Hierarchical RAG]
-    I --> I3[Retrieval-Ensemble RAG]
-    I --> I4[Tool-Augmented RAG]
-    I --> I5[Personalization & Secure RAG]
-    I --> I6[Cross-Lingual RAG]
-    I --> I7[Neuro-Symbolic RAG]
-    I --> I8[Closed-loop / Feedback RAG]
-    I --> I9[Explainable / Provenance RAG]
+    I --> I3[Explainable ...]
 
     %% Final Output
-    F1 & F2 & F3 & G1 & G2 & G3 & H1 & H2 & I1 & I2 & I3 & I4 & I5 & I6 & I7 & I8 & I9 --> Z[LLM Synthesis & Prompt Template] --> Y[Final Answer]
+    F1 & F2 & F3 & G1 & G2 & G3 & H1 & H2 & I1 & I2 & I3 --> Z[LLM Synthesis & Prompt Template] --> Y[Final Answer]
 
     %% Styling (GitHub-safe: named colors only)
     classDef foundation fill=lightblue,stroke=blue,color=black;
@@ -220,7 +214,7 @@ flowchart TD
     class F,F1,F2,F3 foundation;
     class G,G1,G2,G3 intermediate;
     class H,H1,H2 advanced;
-    class I,I1,I2,I3,I4,I5,I6,I7,I8,I9 nextgen;
+    class I,I1,I2,I3 nextgen;
     class A,B,C,D,E,Z,Y process;
 ```
 
